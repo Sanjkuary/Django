@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+</head>
+<style>
+    h1 {
+        color:red
+    }
+    p{
+        color:blue
+    }
+</style>
+<body>
+    <div class="container" style="text-align: center">
+        {% include 'navbar.html' %}
+        <h1>Sanjeev Kumar Yadav</h1>
+        <form action="/home/" method="POST">
+            {% csrf_token %}
+        <input type="checkbox" value="True" name="check">
+        <button><i>Send</i></button>
+        </form>
+        <p>A results-driven and enthusiastic IT professional with over 3 years of experience as a technical support engineer and one and a half years as an application support engineer.<br>supporting service cloud applications for enterprise and essential clients.<br>proven track record of reducing support tickets through proactive problem management and user training.</p>
+        <button>Contact us</button>
+
+        <!--accessing dynamic data -->
+        {% if isActive %}
+    <div>
+        <h1>Today date is {{date}}</h1>
+        <h1> Name is {{name}}</h1>
+        <hr>
+        <h1>Student data</h1>
+        <h2>Student name:{{student_data.student_name}}</h2>
+        <h2>Student college:{{student_data.student_college}}</h2>
+        <h2>Student place:{{student_data.student_place}}</h2>
+        <hr>
+        <h1>Favorite Skills</h1>
+        {% for s in list_of_skills %}
+
+        <h3>{{s}}</h3>
+
+        {% endfor %}
+        
+    </div>
+{% endif %}
+    </div> 
+</body>
+
+</html>
